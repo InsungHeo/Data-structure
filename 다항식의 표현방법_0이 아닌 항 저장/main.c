@@ -4,7 +4,8 @@
 
 // 다항식 표현 방법_0이 아닌 항 저장
 // (계수, 차수) 형식
-struct {
+struct
+{
     float coef;
     int expon;
 } terms[MAX_TERMS] = {{8, 3}, {7, 1}, {1, 0}, {10, 3}, {3, 2}, {1, 0}};
@@ -71,5 +72,7 @@ int main()
 {
     int Cs, Ce;
     poly_add2(0, 2, 3, 5, &Cs, &Ce);
+    printf("%d %d\n", Cs, Ce);
+    printf("%d", terms[Cs].expon);
     return 0;
 }

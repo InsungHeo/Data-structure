@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <error.h>
 typedef struct ListNode
 {
     int coef;
@@ -26,13 +27,10 @@ void insert_node_last(ListHeader *plist, int coef, int expon)
 {
     ListNode *temp = (ListNode *)malloc(sizeof(ListNode));
     if(temp == NULL) // safe coding
-       // error("메모리 할당 에러");
+        perror("메모리 할당 에러");
     temp->coef = coef;
     temp->expon = expon;
     temp->link = NULL;
-
-    printf("%d\n\n", temp->coef);
-    system("pause");
 
     if(plist->tail == NULL)
         plist->head = plist->tail = temp;
@@ -55,7 +53,7 @@ void poly_add(ListHeader *plist1, ListHeader *plist2, ListHeader *plist3)
         {
             sum = a->coef + b->coef;
             if(sum != 0)
-                insert_node_last(plist3, sum, a->coef);
+                insert_node_last(plist3, sum, a->expon);
             a = plist1->head->link; // a = a->link
             b = plist2->head->link; // b = b->link
         }
@@ -104,11 +102,3 @@ int main()
     poly_print(&list3);
     return 0;
 }
-
-// 대체 왜 안되는거지...
-// insert_node_last()의 문제인데...
-// temp == NULL error 처리?? 가 제대로 안됐나?
-// temp->coef = coef;    temp->expon = expon; 이 두 줄의 순서만 바꾸는데 왜 출력이 이상해지지?
-// 왜 expon은 제대로 되는데 coef만 제대로 안되지 순서 빼고는 expon이랑 coef랑 다를게 없는데
-// coef은 잘 전달되었는데, temp->coef는 왜 이상하지
-// 왜 insert_node_last()코드가 6개 있는데, system("pause")가 11번 나타나지...

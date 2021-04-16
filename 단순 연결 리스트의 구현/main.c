@@ -37,12 +37,10 @@ void remove_node(ListNode **phead, ListNode *p, ListNode *removed)
 {
     if(p == NULL) // 연결 리스트의 첫 번째 노드를 삭제
         *phead = (*phead)->link;
-      //*phead = removed->link; 이렇게 해도 되겠지??
     else
         p->link = removed->link;
     free(removed);
 }
-
 
 // 방문 연산 코드
 void display(ListNode *head) // 반복 버전

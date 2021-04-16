@@ -17,9 +17,9 @@ char compare(int a, int b)
     if(a > b)
         return '>';
     else if(a == b)
-        return '<';
-    else
         return '=';
+    else
+        return '<';
 }
 
 // 더해진 다항식을 terms[]에 이어붙이는 함수
@@ -40,7 +40,7 @@ void poly_add2(int As, int Ae, int Bs, int Be, int *Cs, int *Ce)
 {
     float tempcoef;
     *Cs = avail;
-    while(As <= Ae && Bs <=Be)
+    while(As <= Ae && Bs <= Be)
         switch(compare(terms[As].expon, terms[Bs].expon))
         {
             case '>': // A의 차수 > B의 차수
@@ -72,7 +72,7 @@ int main()
 {
     int Cs, Ce;
     poly_add2(0, 2, 3, 5, &Cs, &Ce);
-    printf("%d %d\n", Cs, Ce);
-    printf("%d", terms[Cs].expon);
+    for(int i = Cs; i < Ce + 1; i++)
+        printf("%.1fx^%d  ", terms[i].coef, terms[i].expon);
     return 0;
 }

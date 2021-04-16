@@ -53,6 +53,8 @@ element delete(ArrayListType *L, int position)
 
 int main()
 {
-    int i, n;
+    ArrayListType L;
+    init(&L);
+    printf("%d", is_empty(&L));
     return 0;
 }

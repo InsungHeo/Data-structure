@@ -1,6 +1,7 @@
 #include <stdio.h>
 #define Max(a, b) (((a)>(b))?(a):(b))
 #define MAX_DEGREE 101
+
 // 모든 항을 저장하는 다항식 선언문
 typedef struct
 {
@@ -19,6 +20,8 @@ Polynomial poly_add1(Polynomial A, Polynomial B)
 
     // 결과 다항식의 차수는 A, B 중 차수가 큰 것을 따른다.
     C.degree = Max(A.degree, B.degree);
+
+
     while(Apos <= A.degree && Bpos <= B.degree)
     {
         // A, B의 높은 차수부터 고려하여 C의 높은 차수의 계수 결정
@@ -48,6 +51,8 @@ int main()
     Polynomial b = {4, {1, 0, 5, 0, 7}};     //x^4 + 5x^2 + 7
     Polynomial c;
     c = poly_add1(a, b);
+    for(int i = 0; i < c.degree + 1; i++)
+        printf("%.1fx^%d + ", c.coef[i], c.degree - i);
     return 0;
 
 }

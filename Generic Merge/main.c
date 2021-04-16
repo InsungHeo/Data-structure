@@ -28,24 +28,29 @@ void merge(int *a, int m, int *b, int n, int *c)
         k++;
     }
 
-    if(i < m)
-        while(i < m)
-        {
-            c[k] = a[i];
-            i++;
-            k++;
-        }
-    else
-        while(j < n)
-        {
-            c[k] = b[j];
-            j++;
-            k++;
-        }
+    // 나머지 원소를 c에 이어붙인다.
+    while(i < m)
+    {
+        c[k] = a[i];
+        i++;
+        k++;
+    }
+    while(j < n)
+    {
+        c[k] = b[j];
+        j++;
+        k++;
+    }
 
 }
 
 int main()
 {
+    int a[4] = {0, 2, 25, 50};
+    int b[3] = {1, 18, 100};
+    int c[7] = {0,};
+    merge(a, 4, b, 3, c);
+    for(int i = 0; i < 7; i++)
+        printf("%d ", c[i]);
     return 0;
 }

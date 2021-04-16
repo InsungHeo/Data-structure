@@ -38,8 +38,8 @@ SparseMatrix sparse_matrix_add2(SparseMatrix a, SparseMatrix b)
     while(ca < a.terms && cb < b.terms)
     {
         // 각 항목의 순차적인 번호를 계산한다.
-        int inda = a.data[ca].row*a.cols + a.data[ca].col;
-        int indb = b.data[cb].row*b.cols + b.data[cb].col;
+        int inda = a.data[ca].row * a.cols + a.data[ca].col;
+        int indb = b.data[cb].row * b.cols + b.data[cb].col;
 
         if(inda < indb)
             c.data[cc++] = a.data[ca++];
@@ -65,6 +65,7 @@ SparseMatrix sparse_matrix_add2(SparseMatrix a, SparseMatrix b)
         c.data[cc++] = a.data[ca++];
     for(;cb < b.terms;)
         c.data[cc++] = b.data[cb++];
+
     c.terms = cc;
 
     return c;
@@ -92,6 +93,5 @@ int main()
         }
         printf("\n");
     }
-
     return 0;
 }
